@@ -113,6 +113,7 @@ export interface Team {
 }
 
 export interface Player {
+  opta_code: string
   assists: number
   bonus: number
   bps: number

@@ -18,7 +18,7 @@ export const FixturesList = ({}: PropsWithChildren<PropsType>) => {
     matchSchedule,
     ({ kickoff_time }) => new Date(kickoff_time).toISOString().split('T')[0]
   )
-  console.log('groups', groups)
+
   return (
     <ul className={styles.list}>
       {Object.entries(groups).map(([d, entry]) => {
@@ -35,6 +35,14 @@ export const FixturesList = ({}: PropsWithChildren<PropsType>) => {
                     entry={e}
                     stats={e.stats}
                     isStats={e.team_a_score !== null && e.team_h_score !== null}
+                    score={
+                      e.team_a_score !== null && e.team_h_score !== null
+                        ? {
+                            score_a: e.team_a_score,
+                            score_h: e.team_h_score,
+                          }
+                        : undefined
+                    }
                   >
                     <Item.Score
                       score={{

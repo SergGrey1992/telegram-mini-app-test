@@ -21,7 +21,7 @@ export const Team = ({ isPrimary, managerId }: TeamPropsType) => {
         <Card className={styles.card}>
           <div className={styles.inner}>
             <ManagerInfo />
-            <PickTotalPoints />
+            <PickTotalPoints isPrimary={isPrimary} />
             <Chip />
           </div>
         </Card>

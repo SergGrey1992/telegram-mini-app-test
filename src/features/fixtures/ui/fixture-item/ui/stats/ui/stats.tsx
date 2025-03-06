@@ -14,9 +14,15 @@ interface PropsType {
   stats: FixtureStatsType[]
   teamAName: string // Добавляем проп для команды A
   teamHName: string // Добавляем проп для команды H
+  scoreResult: string
 }
 
-export const Stats = ({ stats, teamAName, teamHName }: PropsType) => {
+export const Stats = ({
+  stats,
+  teamAName,
+  teamHName,
+  scoreResult,
+}: PropsType) => {
   // Функция для замены нижних подчеркиваний на пробелы
   const formatText = (text: string) => {
     return text.replace(/_/g, ' ')
@@ -33,7 +39,7 @@ export const Stats = ({ stats, teamAName, teamHName }: PropsType) => {
       header={
         <Modal.Header>
           <Text weight={'2'}>
-            {teamHName} vs {teamAName}
+            {teamHName} {scoreResult} {teamAName}
           </Text>
         </Modal.Header>
       }

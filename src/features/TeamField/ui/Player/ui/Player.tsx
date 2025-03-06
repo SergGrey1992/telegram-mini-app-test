@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 import styles from './Player.module.css'
-import kit from './shirt.png'
 import { Caption, Modal, Subheadline, Title } from '@telegram-apps/telegram-ui'
 
 import { type TeamFieldType } from '@features/TeamField'
 import { MatchScore } from '../../MatchScore/MatchScore'
+import { ShortPosition } from '@shared/config/constants/constants.ts'
 
 interface PlayerProps extends TeamFieldType {
   isBench?: boolean
@@ -25,6 +25,11 @@ export const Player: FC<PlayerProps> = ({
   const formatText = (text: string) => {
     return text.replace(/_/g, ' ')
   }
+  //https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_17-220.webp //обычный игрок
+  //https://fantasy.premierleague.com/dist/img/shirts/standard/shirt_14_1-220.webp // вратарь
+  //https://resources.premierleague.com/premierleague/photos/players/110x140/man44410.png // тренер
+  const formImageUrl = `https://fantasy-api-blond.vercel.app/img//shirts/standard/shirt_${player.team_code}${player.element_type === 1 ? '_1' : ''}-220.webp`
+  const formImageUrlTrainer = `https://fantasy-api-blond.vercel.app/resources/premierleague/photos/players/110x140/${player?.opta_code}.png`
 
   return (
     <>
@@ -55,8 +60,16 @@ export const Player: FC<PlayerProps> = ({
                   </Caption>
                 </div>
               )}
+              {isBench && <div>{ShortPosition[player.element_type]}</div>}
               <div className={styles.kit}>
-                <img src={kit} alt="kit" />
+                <img
+                  src={
+                    player?.element_type === 5
+                      ? formImageUrlTrainer
+                      : formImageUrl
+                  }
+                  alt="kit"
+                />
               </div>
               <Caption level="1" weight="2" className={styles['name']}>
                 {player.web_name}

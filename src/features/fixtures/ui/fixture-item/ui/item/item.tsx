@@ -14,6 +14,10 @@ interface PropsType {
   entry: FixtureWithTeam
   stats: FixtureStatsType[]
   isStats: boolean
+  score?: {
+    score_a: Nullable<number>
+    score_h: Nullable<number>
+  }
 }
 
 const _icon_size = 42
@@ -23,6 +27,7 @@ export const Item = ({
   children,
   isStats,
   stats,
+  score,
 }: PropsWithChildren<PropsType>) => {
   return (
     // <Accordion expanded={isOpen} onChange={setIsOpen}>
@@ -56,6 +61,7 @@ export const Item = ({
             teamAName={entry.team_a.name}
             teamHName={entry.team_h.name}
             stats={stats}
+            scoreResult={score ? `${score.score_h}:${score.score_a}` : 'vs'}
           />
         )}
       </li>

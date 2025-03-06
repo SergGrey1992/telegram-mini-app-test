@@ -9,7 +9,6 @@ interface PropsType {}
 
 export const LoadData = ({ children }: PropsWithChildren<PropsType>) => {
   const isLoading = useAppSelector((state) => state.bootstrapStatic.loading)
-  const status = useAppSelector((state) => state.bootstrapStatic.status)
   const instanceCloud = useAppSelector((state) => state.cloud.instance)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
@@ -36,21 +35,10 @@ export const LoadData = ({ children }: PropsWithChildren<PropsType>) => {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100%',
+          position: 'fixed',
+          inset: 0,
         }}
       >
-        <div>
-          <div>
-            <span>Получение статических данных: </span>
-            <span>{status}</span>
-          </div>
-          <div>
-            <span>Получение сохраненого ID менеджера: </span>
-            <span>{id}</span>
-          </div>
-          {/*<div>*/}
-          {/*  <span>Получение данных о менеджере</span>*/}
-          {/*</div>*/}
-        </div>
         <Spinner size={'l'} />
       </div>
     )

@@ -9,6 +9,7 @@ export const Chip = ({}: PropsType) => {
   if (activeChip === null) {
     return null
   }
+  console.log('activeChip', activeChip)
   return (
     <Text weight={'3'}>
       {CHIPS_LIST[activeChip]}:{' '}

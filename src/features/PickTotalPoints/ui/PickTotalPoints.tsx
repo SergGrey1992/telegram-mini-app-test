@@ -1,10 +1,10 @@
 import { useAppSelector } from '@app/store'
 
-import { Title } from '@telegram-apps/telegram-ui'
+import { Title, IconButton } from '@telegram-apps/telegram-ui'
 import styles from './PickTotalPoints.module.css'
 import { RefreshTeam } from '@features/RefreshTeam'
 
-export const PickTotalPoints = () => {
+export const PickTotalPoints = ({ isPrimary }: { isPrimary: boolean }) => {
   const teamInfo = useAppSelector((state) => state.team.data) ?? []
   const stats = teamInfo.map((t) => ({
     multiplier: t.multiplier,
@@ -24,6 +24,11 @@ export const PickTotalPoints = () => {
         Points: {total__}
       </Title>
       <RefreshTeam />
+      {!isPrimary && <BackMyTeam />}
     </div>
   )
+}
+
+const BackMyTeam = () => {
+  return <IconButton>Back to my team</IconButton>
 }

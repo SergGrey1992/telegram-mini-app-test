@@ -72,7 +72,8 @@
 
 .modal {
     background-color: #0F0F0F;
-    padding: 0 24px;
+    padding: 0 24px 90px 24px;
+
 }
 
 .headerTable {
