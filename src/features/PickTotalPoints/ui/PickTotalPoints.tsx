@@ -1,8 +1,9 @@
-import { useAppSelector } from '@app/store'
+import { useAppDispatch, useAppSelector } from '@app/store'
 
 import { Title, IconButton } from '@telegram-apps/telegram-ui'
 import styles from './PickTotalPoints.module.css'
 import { RefreshTeam } from '@features/RefreshTeam'
+import { setSecondaryManagerId } from '@features/team/index.ts'
 
 export const PickTotalPoints = ({ isPrimary }: { isPrimary: boolean }) => {
   const teamInfo = useAppSelector((state) => state.team.data) ?? []
@@ -30,5 +31,11 @@ export const PickTotalPoints = ({ isPrimary }: { isPrimary: boolean }) => {
 }
 
 const BackMyTeam = () => {
-  return <IconButton>Back to my team</IconButton>
+  const dispatch = useAppDispatch()
+
+  const resetSecondaryTeam = () => {
+    dispatch(setSecondaryManagerId(-1))
+  }
+
+  return <IconButton onClick={resetSecondaryTeam}>Back to my team</IconButton>
 }
