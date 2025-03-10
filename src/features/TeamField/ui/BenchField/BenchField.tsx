@@ -20,6 +20,7 @@ export const BenchField = ({
       {trainer.length > 0 && <Player {...trainer[0]} isBench />}
       <div
         style={{
+          width: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',

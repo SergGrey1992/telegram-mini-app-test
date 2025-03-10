@@ -60,7 +60,18 @@ export const Player: FC<PlayerProps> = ({
                   </Caption>
                 </div>
               )}
-              {isBench && <div>{ShortPosition[player.element_type]}</div>}
+              {isBench && (
+                <div
+                  style={{
+                    marginBottom: 6,
+                    textDecoration: 'underline',
+                    textDecorationStyle: 'dotted',
+                    fontSize: 12,
+                  }}
+                >
+                  {ShortPosition[player.element_type]}
+                </div>
+              )}
               <div className={styles.kit}>
                 <img
                   src={
