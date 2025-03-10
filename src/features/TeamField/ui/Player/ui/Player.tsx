@@ -67,6 +67,7 @@ export const Player: FC<PlayerProps> = ({
                     textDecoration: 'underline',
                     textDecorationStyle: 'dotted',
                     fontSize: 12,
+                    color: 'white',
                   }}
                 >
                   {ShortPosition[player.element_type]}
